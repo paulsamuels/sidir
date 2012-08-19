@@ -1,4 +1,4 @@
-# Sider
+# Sidir
 
 iOS Simulator directory explorer. This gem is a personal tool intended to make it slightly easier to navigate/manage the iOS Applications directory
 
@@ -6,7 +6,7 @@ iOS Simulator directory explorer. This gem is a personal tool intended to make i
 
 Add this line to your application's Gemfile:
 
-    gem 'sider'
+    gem 'sidir'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install sider
+    $ gem install sidir
 
 ## Usage
 
@@ -51,7 +51,7 @@ Once you have cd'd into the context of a simulator you'll have more options avai
 
 - Currently the app it's hard coded to load at 
 
-    ~/Library/Application Support/iPhone Simulator/
+        ~/Library/Application Support/iPhone Simulator/
     
 this obviously is less than ideal
 
