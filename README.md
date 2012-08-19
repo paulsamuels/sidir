@@ -29,11 +29,11 @@ Use help to print available commands
 Once you have cd'd into the context of a simulator you'll have more options available
 
     sidir /5.1 > help
-          cd <item> - open finder at <item>
-          cd ..     - move back to simulators
-          ls        - list available applications
-          rm        - delete the application and all data 
-          reset     - clean all paths as if the app is freshly installed
+          cd    <item> - open finder at <item>
+          cd    ..     - move back to simulators
+          ls           - list available applications
+          rm    <item> - delete the application <item> and all associated data 
+          reset <item> - clean all paths in <item> as if the app is freshly installed
           
 An example session might look something like (horizontal space added for clarity)
 
