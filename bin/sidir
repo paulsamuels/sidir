@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'sidir'
+
+Sidir::CLI.parse_options
