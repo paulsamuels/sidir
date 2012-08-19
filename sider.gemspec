@@ -3,9 +3,9 @@ require File.expand_path('../lib/sidir/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Paul Samuels"]
-  gem.email         = ["p.samuels@mmu.ac.uk"]
-  gem.description   = %q{Write a gem description}
-  gem.summary       = %q{Write a gem summary}
+  gem.email         = ["paulio1987@gmail.com"]
+  gem.description   = %q{iOS Simulator directory explorer. This gem is a personal tool intended to make it slightly easier to navigate/manage the iOS Applications directory}
+  gem.summary       = %q{iOS Simulator directory explorer}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)

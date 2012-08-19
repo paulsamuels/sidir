@@ -1,14 +1,12 @@
 require 'readline'
-require 'shellwords'
 
 module Sidir
   class Browser
-    
     attr_accessor :current_context
     
     def initialize
       Dir.chdir File.expand_path("~/Library/Application Support/iPhone Simulator/")
-      self.current_context = SimulatorsContext.new nil
+      @current_context = SimulatorsContext.new nil
     end
     
     def self.start
@@ -16,38 +14,25 @@ module Sidir
     end
         
     def repl
-      command = nil
+      cmd = nil
       
       Readline.completion_proc = proc do |input|
         current_context.completions input
       end
       
-      while command != 'exit'
-        command = Readline.readline "sidir #{current_context.prompt} > ", true
-        break if command.nil?
-        execute_command command
-      end
-    end
-    
-    def execute_command cmd
-      case cmd
-      when /^ls$/
-        puts current_context.ls
-      when /^cd (.*)/
-        paths = $1.split('/')
+      while cmd != 'exit'
+        line = Readline.readline("sidir #{current_context.prompt} > ", true)
+        args = line.split
+        cmd  = args.shift
         
-        paths.each do |path|
-          if path == '..'
-            self.current_context = current_context.traverse_up
-          else
-            self.current_context = current_context.traverse_down path
-          end
+        break if cmd.nil?
+        
+        if current_context.available_command? cmd
+          self.current_context = current_context.execute_command cmd, args
+        else
+          puts "command not recognised :#{cmd}"
+          current_context.help nil
         end
-        
-      when /^show/
-        `open #{Shellwords.escape current_context.open_path}`
-      when /^help$/
-        puts self.current_context.help
       end
     end
   end

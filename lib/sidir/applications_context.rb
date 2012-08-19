@@ -1,4 +1,5 @@
 require 'shellwords'
+require 'fileutils'
 
 module Sidir
   class ApplicationsContext < Context
@@ -33,16 +34,65 @@ module Sidir
       self
     end
     
+    def rm args
+      app = args.first
+      
+      if directories.include? app
+        puts "All data associated with \"#{app}\" will be permanently deleted.\nAre you sure?[yn]"
+        answer = gets.strip
+        if answer == 'y'
+          FileUtils.rm_rf applications[app]
+          puts "#{app} deleted"
+        end
+      else
+        puts "\"#{app}\" not found"
+      end
+      self
+    end
+    
+    def reset args
+      app = args.first
+
+      if directories.include? app
+        FileUtils.cd applications[app] do
+          puts "#{Dir.pwd}"
+
+          %w(tmp Documents Library/Caches Library/Preferences).each do |dir|
+            FileUtils.cd dir do
+              Dir.glob('**').each do |path|
+                unless path =~ /com\.apple\..*/
+                  puts "cd #{dir}"
+                  FileUtils.rm_r(path, verbose: true) 
+                  puts 'cd -'
+                end
+              end
+            end
+          end
+          
+        end
+      else
+        puts "\"#{app}\" not found"
+      end
+      self
+    end
+    
     def prompt
       parent_context.prompt + "#{simulator}"
     end
     
-    def help
-      %Q{
-        cd <item> - open finder at <item>
-        cd ..     - move back to simulators
-        ls        - list available applications
-      }
+    def commands
+      super + %w(rm reset)
+    end
+    
+    def help args
+      puts <<-help
+      cd <item> - open finder at <item>
+      cd ..     - move back to simulators
+      ls        - list available applications
+      rm        - delete the application and all data 
+      reset     - clean all paths as if the app is freshly installed
+      help
+      self
     end
     
     private
