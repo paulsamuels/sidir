@@ -89,6 +89,7 @@ module Sidir
       cd    <item> - open finder at <item>
       cd    ..     - move back to simulators
       ls           - list available applications
+      show         - open Finder here
       rm    <item> - delete the application <item> and all associated data 
       reset <item> - clean all paths in <item> as if the app is freshly installed
       help

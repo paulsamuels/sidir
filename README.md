@@ -25,6 +25,8 @@ Use help to print available commands
     sidir / > help
           cd <item> - change to directory at <item>
           ls        - list available simulators
+          show      - open Finder here
+          exit      - exit sidir
           
 Once you have cd'd into the context of a simulator you'll have more options available
 
@@ -32,8 +34,10 @@ Once you have cd'd into the context of a simulator you'll have more options avai
           cd    <item> - open finder at <item>
           cd    ..     - move back to simulators
           ls           - list available applications
+          show         - open Finder here
           rm    <item> - delete the application <item> and all associated data 
           reset <item> - clean all paths in <item> as if the app is freshly installed
+          exit         - exit sidir
           
 An example session might look something like (horizontal space added for clarity)
 

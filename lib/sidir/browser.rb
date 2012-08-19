@@ -25,7 +25,7 @@ module Sidir
         args = line.split
         cmd  = args.shift
         
-        break if cmd.nil?
+        break if cmd.nil? || cmd == 'exit'
         
         if current_context.available_command? cmd
           self.current_context = current_context.execute_command cmd, args

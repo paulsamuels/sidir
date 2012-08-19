@@ -19,6 +19,7 @@ module Sidir
       puts <<-help
       cd <item> - change to directory at <item>
       ls        - list available simulators
+      show      - open Finder here
       help
       self
     end
