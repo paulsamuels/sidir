@@ -4,21 +4,17 @@ iOS Simulator directory explorer. This gem is a personal tool intended to make i
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'sidir'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it yourself as:
 
     $ gem install sidir
 
 ## Usage
 
-sidir is a quick, dirty experiment that attempts to use commands with similar semantics to those in common shells to make them easy to remember. The main reason for sidir is because Applications are stored under unique hashs in the Applications directory, which makes this a pain to navigate in finder especially if you have lots of apps installed in your simulators.
+sidir is a quick, dirty experiment that attempts to use commands with similar semantics to those in common shells to add contextual navigation of the iOS sims directories. The main reason for sidir is because Applications are stored under unique hashes in the Applications directory, which makes this a pain to navigate in finder, especially if you have lots of apps installed in your simulators.
+    
+Start at your terminal with
+
+    sidir
     
 At which point you'll get a simple prompt
 
@@ -38,6 +34,37 @@ Once you have cd'd into the context of a simulator you'll have more options avai
           ls        - list available applications
           rm        - delete the application and all data 
           reset     - clean all paths as if the app is freshly installed
+          
+An example session might look something like (horizontal space added for clarity)
+
+    sidir
+    
+    sidir / > ls
+    4.3.2
+    5.0
+    5.1
+    
+    sidir / > cd 5.1
+    
+    sidir /5.1 > ls
+    Animations
+    Lines
+    Testing
+    hello_world
+    
+    sidir /5.1 > reset Testing 
+    /Users/paul/Library/Application Support/iPhone Simulator/5.1/Applications/927BF49B-95ED-44AF-BC98-A8FB6E49571A
+    cd Library/Caches
+    rm -r Snapshots
+    cd -
+    
+    sidir /5.1 > rm Testing 
+    All data associated with "Testing" will be permanently deleted.
+    Are you sure?[yn]
+    y
+    Testing deleted
+    
+    sidir /5.1 > exit
 
 ## Contributing
 
