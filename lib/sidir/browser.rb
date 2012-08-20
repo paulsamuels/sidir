@@ -22,11 +22,12 @@ module Sidir
       
       while cmd != 'exit'
         line = Readline.readline("sidir #{current_context.prompt} > ", true)
+        
+        break if line.nil? || line =~ /^exit$/
+        
         args = line.split
         cmd  = args.shift
-        
-        break if cmd.nil? || cmd == 'exit'
-        
+                
         if current_context.available_command? cmd
           self.current_context = current_context.execute_command cmd, args
         else

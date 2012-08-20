@@ -1,3 +1,5 @@
+trap("SIGINT") { exit! }
+
 require "sidir/version"
 require "sidir/browser"
 require "sidir/cli"
