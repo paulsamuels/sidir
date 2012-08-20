@@ -7,7 +7,7 @@ module Sidir
     attr_reader :simulator
         
     def directories
-      applications.keys.sort
+      applications.keys.sort { |a,b| a.upcase <=> b.upcase }
     end
 
     def applications
