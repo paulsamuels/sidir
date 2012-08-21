@@ -62,7 +62,7 @@ module Sidir
               Dir.glob('**').each do |path|
                 unless path =~ /com\.apple\..*/
                   puts "cd #{dir}"
-                  FileUtils.rm_r(path, verbose: true) 
+                  FileUtils.rm_r(path, :verbose => true) 
                   puts 'cd -'
                 end
               end

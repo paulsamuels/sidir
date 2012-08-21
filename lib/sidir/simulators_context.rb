@@ -9,6 +9,7 @@ module Sidir
       
       unless directories.include? dir
         puts "No such simulator :#{dir}"
+        return self
       end
       
       Dir.chdir "#{dir}/Applications"
