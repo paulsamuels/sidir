@@ -28,6 +28,7 @@ module Sidir
       
       unless applications.keys.include? dir
         puts "No such application :#{dir}"
+        return self
       end
       
       `open #{Shellwords.escape(Dir.pwd + '/' + applications[dir])}`
